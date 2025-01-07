@@ -6,7 +6,10 @@ import java.util.UUID;
 
 import org.hibernate.validator.constraints.br.CPF;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
@@ -20,6 +23,8 @@ import lombok.NoArgsConstructor;
 @Entity
 public class Cliente {
 	@Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "id", updatable = false, unique = true, nullable = false)
 	private UUID idCliente;
 	@NotBlank
 	private String nomeCompelto;
@@ -42,7 +47,6 @@ public class Cliente {
 	public Cliente(@NotBlank String nomeCompelto, @NotBlank @Email String email, @NotBlank String celular,
 			String telefone, Sexo sexo, @NotNull LocalDate dataNascimento, @CPF String cpf,
 			@NotNull Boolean aceitaTermos) {
-		this.idCliente = UUID.randomUUID();
 		this.nomeCompelto = nomeCompelto;
 		this.email = email;
 		this.celular = celular;
