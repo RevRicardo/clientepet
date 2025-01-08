@@ -8,6 +8,8 @@ import org.hibernate.validator.constraints.br.CPF;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -27,14 +29,13 @@ public class Cliente {
     @Column(name = "id", updatable = false, unique = true, nullable = false)
 	private UUID idCliente;
 	@NotBlank
-	private String nomeCompelto;
+	private String nomeCompleto;
 	@NotBlank
 	@Email
 	private String email;
 	@NotBlank
 	private String celular;
 	private String telefone;
-	private Sexo sexo;
 	@NotNull
 	private LocalDate dataNascimento;
 	@CPF
@@ -44,14 +45,12 @@ public class Cliente {
 	private LocalDateTime dataHoraDoCadastro;
 	private LocalDateTime dataHoraDaUltimaAlteracao;
 	
-	public Cliente(@NotBlank String nomeCompelto, @NotBlank @Email String email, @NotBlank String celular,
-			String telefone, Sexo sexo, @NotNull LocalDate dataNascimento, @CPF String cpf,
-			@NotNull Boolean aceitaTermos) {
-		this.nomeCompelto = nomeCompelto;
+	public Cliente(String nomeCompelto, String email, String celular, String telefone, 
+			LocalDate dataNascimento, String cpf, 			Boolean aceitaTermos) {
+		this.nomeCompleto = nomeCompelto;
 		this.email = email;
 		this.celular = celular;
 		this.telefone = telefone;
-		this.sexo = sexo;
 		this.dataNascimento = dataNascimento;
 		this.cpf = cpf;
 		this.aceitaTermos = aceitaTermos;
