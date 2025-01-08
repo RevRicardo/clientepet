@@ -1,5 +1,7 @@
 package br.com.petz.clientepet.cliente.application.api;
 
-public class ClienteResponse {
+import java.util.UUID;
 
+public class ClienteResponse {
+	private UUID idCliente;
 }
